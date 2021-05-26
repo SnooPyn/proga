@@ -1,0 +1,72 @@
+[
+    {
+      "Name": "Venom",
+      "x": 5.5,
+      "y": 20.6,
+      "OscarsCount": 26,
+      "TotalBoxOffice": 86,
+      "MovieGenre": "ACTION",
+      "MpaaRating": "G",
+      "Person": {
+        "PersonName": "Anton",
+        "Height": 190,
+        "Weight": 85
+      }
+    },
+    {
+      "Name": "Blended",
+      "x": 8.12,
+      "y": 145.9,
+      "OscarsCount": 21,
+      "TotalBoxOffice": 65,
+      "MovieGenre": "COMEDY",
+      "MpaaRating": "PG",
+      "Person": {
+        "PersonName": "Leonel",
+        "Height": 181,
+        "Weight": 75
+      }
+    },
+    {
+      "Name": "Avengers",
+      "x": 4.7,
+      "y": 86.4,
+      "OscarsCount": 21,
+      "TotalBoxOffice": 81,
+      "MovieGenre": "ADVENTURE",
+      "MpaaRating": "PG_13",
+      "Person": {
+        "PersonName": "Kylian",
+        "Height": 179,
+        "Weight": 80
+      }
+    },
+    {
+      "Name": "Shook",
+      "x": 1.9,
+      "y": -23.7,
+      "OscarsCount": 29,
+      "TotalBoxOffice": 68,
+      "MovieGenre": "HORROR",
+      "MpaaRating": "R",
+      "Person": {
+        "PersonName": "Palina",
+        "Height": 155,
+        "Weight": 67
+      }
+    },
+    {
+      "Name": "Bliss",
+      "x": 7.2,
+      "y": 269.5,
+      "OscarsCount": 27,
+      "TotalBoxOffice": 73,
+      "MovieGenre": "SCIENCE_FICTION",
+      "MpaaRating": "NC_17",
+      "Person": {
+        "PersonName": "Kristina",
+        "Height": 160,
+        "Weight": 60
+      }
+    }
+  ]
