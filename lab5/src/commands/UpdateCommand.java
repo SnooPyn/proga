@@ -53,6 +53,7 @@ public class UpdateCommand extends AbstractCommand {
             if (movieAsker.askQuestion("Want to change the film's screenwriter?")) screenwriter = movieAsker.askPerson();
 
             collectionManager.addToCollection(new Movie(
+
                     name,
                     coordinates,
                     creationDate,

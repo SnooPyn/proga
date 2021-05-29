@@ -169,6 +169,7 @@ public class MovieAsker {
 
     /**
      * Asks a user the movie's totalBoxOffice.
+     *
      * @return Movie's totalBoxOffice.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -200,8 +201,10 @@ public class MovieAsker {
         }
         return totalBoxOffice;
     }
+
     /**
      * Asks a user the movie's genre.
+     *
      * @return Movie's genre.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -230,8 +233,10 @@ public class MovieAsker {
         }
         return genre;
     }
+
     /**
      * Asks a user the movie's mpaa rating.
+     *
      * @return Movie's mpaa rating.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -260,8 +265,10 @@ public class MovieAsker {
         }
         return mpaaRating;
     }
+
     /**
      * Asks a user the movie's oscars count.
+     *
      * @return Movie's oscars count.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -293,8 +300,10 @@ public class MovieAsker {
         }
         return oscarsCount;
     }
+
     /**
      * Asks a user the movie person's name.
+     *
      * @return Person's name.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -321,8 +330,10 @@ public class MovieAsker {
         }
         return personName;
     }
+
     /**
      * Asks a user the movie person's height.
+     *
      * @return height.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -354,8 +365,10 @@ public class MovieAsker {
         }
         return height;
     }
+
     /**
      * Asks a user the movie person's weight.
+     *
      * @return weight.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -387,8 +400,10 @@ public class MovieAsker {
         }
         return weight;
     }
+
     /**
      * Asks a user the movie's person.
+     *
      * @return Movie's person.
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
@@ -401,10 +416,12 @@ public class MovieAsker {
         weight = askPersonWeight();
         return new Person(name, height, weight);
     }
+
     /**
      * Asks a user a question.
-     * @return Answer (true/false).
+     *
      * @param question A question.
+     * @return Answer (true/false).
      * @throws IncorrectInputInScriptException If script is running and something goes wrong.
      */
     public boolean askQuestion(String question) throws IncorrectInputInScriptException {

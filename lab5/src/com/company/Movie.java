@@ -1,12 +1,14 @@
 package com.company;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * Main character. Is stored in the collection.
  */
-public class Movie implements Comparable<Movie>{
+public class Movie implements Comparable<Movie> {
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private static Long idIndicator = 1L;
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -18,7 +20,8 @@ public class Movie implements Comparable<Movie>{
 
     public Movie(String name, Coordinates coordinates, LocalDateTime creationDate, long oscarsCount,
                  long totalBoxOffice, MovieGenre genre, MpaaRating mpaaRating, Person screenwriter) {
-        this.id = (long)(Math.random()*1000000000)+1;
+        this.id = GetIdIndicator();
+        SetIdIndicator();
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
@@ -36,6 +39,15 @@ public class Movie implements Comparable<Movie>{
         return id;
     }
 
+    public long GetIdIndicator(){
+        return idIndicator;
+    }
+    public void SetIdIndicator(){
+        idIndicator++;
+    }
+    public void DecreaseId(){
+        idIndicator--;
+    }
     /**
      * @return Name of the movie.
      */
@@ -67,30 +79,39 @@ public class Movie implements Comparable<Movie>{
     /**
      * @return Total box office of the movie.
      */
-    public long GetTotalBoxOffice(){
+    public long GetTotalBoxOffice() {
         return totalBoxOffice;
     }
 
     /**
      * @return Genre of the movie.
      */
-    public MovieGenre GetGenre(){
+    public MovieGenre GetGenre() {
         return genre;
     }
+
     /**
      * @return Mpaa rating of the movie.
      */
-    public MpaaRating GetMpaaRating(){
+    public MpaaRating GetMpaaRating() {
         return mpaaRating;
     }
 
-    public Person GetScreenwriter(){
+    public Person GetScreenwriter() {
         return screenwriter;
     }
+
     @Override
     public int compareTo(Movie movieObj) {
-        return id.compareTo(movieObj.GetId());
+//        int result = Long.compare(oscarsCount, movieObj.oscarsCount);
+        int result = 0;
+        if (result == 0) {
+            result = mpaaRating.CompareTo(movieObj.mpaaRating);
+        }
+        if (result == 0) result = Long.compare(totalBoxOffice, movieObj.totalBoxOffice);
+        return result;
     }
+
     @Override
     public String toString() {
         String info = "";
@@ -108,10 +129,10 @@ public class Movie implements Comparable<Movie>{
 
     @Override
     public int hashCode() {
-        return name.hashCode() + coordinates.hashCode() + (int) oscarsCount + (int) totalBoxOffice + genre.hashCode() +
-                mpaaRating.hashCode() + screenwriter.hashCode();
-
+        return Objects.hash(name, coordinates, oscarsCount, totalBoxOffice, genre,
+                mpaaRating, screenwriter);
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -124,7 +145,6 @@ public class Movie implements Comparable<Movie>{
         }
         return false;
     }
-
 
 
 }

@@ -1,33 +1,28 @@
 package com.company;
 
 public enum MpaaRating {
-    G,
-    PG,
-    PG_13,
-    R,
-    NC_17;
+    G(1),
+    PG(2),
+    PG_13(3),
+    R(4),
+    NC_17(5);
 
-    public int CompareTo(MpaaRating Enum){
-    int firstEnum = 0;
-    int secondEnum = 0;
-    if (Enum.equals(MpaaRating.G)) firstEnum = 1;
-    if (Enum.equals(MpaaRating.PG)) firstEnum = 2;
-    if (Enum.equals(MpaaRating.PG_13)) firstEnum = 3;
-    if (Enum.equals(MpaaRating.R)) firstEnum = 4;
-    if (Enum.equals(MpaaRating.NC_17)) firstEnum = 5;
-    if (MpaaRating.super.equals(MpaaRating.G)) secondEnum = 1;
-    if (MpaaRating.super.equals(MpaaRating.PG)) secondEnum = 2;
-    if (MpaaRating.super.equals(MpaaRating.PG_13)) secondEnum = 3;
-    if (MpaaRating.super.equals(MpaaRating.R)) secondEnum = 4;
-    if (MpaaRating.super.equals(MpaaRating.NC_17)) secondEnum = 5;
-    return Integer.compare(firstEnum, secondEnum);
+    int priority;
+
+    MpaaRating(int priority) {
+        this.priority = priority;
     }
-    public static String ratingList() {
+
+    public int CompareTo(MpaaRating Enum) {
+        return Integer.compare(this.priority, Enum.priority);
+    }
+
+    public static final String ratingList() {
         String nameList = "";
         for (MpaaRating rating : values()) {
             nameList += rating.name() + ", ";
         }
-        return nameList.substring(0, nameList.length()-2);
+        return nameList.substring(0, nameList.length() - 2);
     }
 }
 

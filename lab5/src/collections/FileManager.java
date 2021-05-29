@@ -8,8 +8,6 @@ import com.company.*;
 import com.google.gson.*;
 
 
-
-
 public class FileManager {
     private final GsonBuilder gsonBuilder = new GsonBuilder();
     private final String argcomstr;
@@ -32,6 +30,7 @@ public class FileManager {
 
     /**
      * Reads collection from a file.
+     *
      * @return Readed collection.
      */
 
@@ -40,31 +39,31 @@ public class FileManager {
             try {
                 BufferedReader collectionFileBufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(argcomstr)));
                 JsonDeserializer<Movie> deserializer = (jsonElement, type, jsonDeserializationContext) -> {
-                        JsonObject movieJson = jsonElement.getAsJsonObject();
-                        JsonObject personJson = movieJson.getAsJsonObject("Person");
-                        Person person = new Person(personJson.get("PersonName").getAsString(),
-                                personJson.get("Height").getAsInt(),
-                                personJson.get("Weight").getAsDouble());
-                        return new Movie(
-                                movieJson.get("Name").getAsString(),
-                                new Coordinates(movieJson.get("x").getAsFloat(), movieJson.get("y").getAsDouble()),
-                                LocalDateTime.now(),
-                                movieJson.get("OscarsCount").getAsLong(),
-                                movieJson.get("TotalBoxOffice").getAsLong(),
-                                MovieGenre.valueOf(movieJson.get("MovieGenre").getAsString()),
-                                MpaaRating.valueOf(movieJson.get("MpaaRating").getAsString()), person);
+                    JsonObject movieJson = jsonElement.getAsJsonObject();
+                    JsonObject personJson = movieJson.getAsJsonObject("Person");
+                    Person person = new Person(personJson.get("PersonName").getAsString(),
+                            personJson.get("Height").getAsInt(),
+                            personJson.get("Weight").getAsDouble());
+                    return new Movie(
+                            movieJson.get("Name").getAsString(),
+                            new Coordinates(movieJson.get("x").getAsFloat(), movieJson.get("y").getAsDouble()),
+                            LocalDateTime.now(),
+                            movieJson.get("OscarsCount").getAsLong(),
+                            movieJson.get("TotalBoxOffice").getAsLong(),
+                            MovieGenre.valueOf(movieJson.get("MovieGenre").getAsString()),
+                            MpaaRating.valueOf(movieJson.get("MpaaRating").getAsString()), person);
                 };
                 String text;
                 StringBuffer ListText = new StringBuffer();
-                while ((text = collectionFileBufferedReader.readLine())!=null)
+                while ((text = collectionFileBufferedReader.readLine()) != null)
                     ListText.append(text);
-                Gson gson = gsonBuilder.registerTypeAdapter(Movie.class,deserializer).create();
-                Movie[] ArrayMovie = gson.fromJson(ListText.toString(),Movie[].class);
+                Gson gson = gsonBuilder.registerTypeAdapter(Movie.class, deserializer).create();
+                Movie[] ArrayMovie = gson.fromJson(ListText.toString(), Movie[].class);
                 CollectionMovie.addAll(Arrays.asList(ArrayMovie));
                 Console.println("Collection successfully loaded!");
             } catch (FileNotFoundException exception) {
                 Console.printerror("Boot file not found!");
-            } catch (NoSuchElementException|IOException exception) {
+            } catch (NoSuchElementException | IOException exception) {
                 Console.printerror("Boot file is empty!");
 
             } catch (IllegalStateException exception) {
